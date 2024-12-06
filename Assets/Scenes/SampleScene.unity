@@ -379,7 +379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 316090249}
   distance: 4.600004
-  rotationSpeed: 1000
+  rotationSpeed: 200
   zoomSpeed: 2
   minDistance: 2.600004
   maxDistance: 4.600004

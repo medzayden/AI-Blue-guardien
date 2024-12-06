@@ -1,12 +1,18 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+using System.Collections;
+
 public class EarthHealth : MonoBehaviour
 {
     //public Slider heartbeatSlider;
     //public Slider temperatureSlider;
     public float heartbeat = 100f;
     public float temperature = 25f;
+
+
+  
+
 
     void Update()
     {
@@ -25,5 +31,7 @@ public class EarthHealth : MonoBehaviour
             Debug.Log("Earth's health has failed!");
         }
     }
+
+
 }
 
