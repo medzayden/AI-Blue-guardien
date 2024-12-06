@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
@@ -25,6 +26,8 @@ public class GameManager : MonoBehaviour
     public Image airPollutionFill;
     public float Overfishing = 0f; public float overfishingGrothRate = 0.2f;
     public Image OverfishingFill;
+
+    
 
     // Threat types (can expand with more types as needed)
     private enum ThreatType { Plastic, AirPolliton, Overfishing, population }
@@ -106,7 +109,7 @@ public class GameManager : MonoBehaviour
         airPollutionGrothRate += 0.3f;
 
         earthHealth.temperature += currentThreatIntensity * 0.2f;
-        earthHealth.heartbeat -= currentThreatIntensity * 0.3f; // Acidification also affects biodiversity
+        earthHealth.heartbeat -= currentThreatIntensity * airPollutionGrothRate; // Acidification also affects biodiversity
     }
 
     void CauseOverfishing()
@@ -117,7 +120,7 @@ public class GameManager : MonoBehaviour
         overfishingGrothRate += 0.5f;
 
         // Damage biodiversity and coral reefs
-        earthHealth.heartbeat -= currentThreatIntensity * 0.6f;
+        earthHealth.heartbeat -= currentThreatIntensity * overfishingGrothRate;
     }
 
     void IncreasePopulation()
@@ -128,7 +131,7 @@ public class GameManager : MonoBehaviour
         population += 5;
         populationGrothRate += 0.6f;
 
-        earthHealth.heartbeat -= currentThreatIntensity * 0.6f;
+        earthHealth.heartbeat -= currentThreatIntensity * populationGrothRate;
     }
 }
 

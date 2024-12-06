@@ -1,17 +1,17 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-using System.Collections;
-
 public class EarthHealth : MonoBehaviour
 {
-    //public Slider heartbeatSlider;
-    //public Slider temperatureSlider;
+    public Image heartbeatSlider;
+    public Image temperatureSlider;
     public float heartbeat = 100f;
     public float temperature = 25f;
 
+    public TextMeshProUGUI healthText;
+    public TextMeshProUGUI temperatureText;
 
-  
 
 
     void Update()
@@ -20,9 +20,13 @@ public class EarthHealth : MonoBehaviour
         heartbeat -= Time.deltaTime * 0.1f; // Decrease over time
         temperature += Time.deltaTime * 0.05f; // Increase temperature over time
 
+
+        temperatureText.text = ((int)temperature).ToString();
+        healthText.text = ((int)heartbeat).ToString();
         // Update UI sliders
-        //heartbeatSlider.value = heartbeat;
-        //temperatureSlider.value = temperature;
+
+        heartbeatSlider.fillAmount = heartbeat / 100;
+        temperatureSlider.fillAmount = temperature / 100;
 
         // Game Over condition if temperature or heartbeat reaches critical levels
         if (heartbeat <= 0 || temperature >= 40)
