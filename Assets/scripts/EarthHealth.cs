@@ -11,6 +11,7 @@ public class EarthHealth : MonoBehaviour
 
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI temperatureText;
+    public GameObject losePanel;
 
 
 
@@ -33,6 +34,9 @@ public class EarthHealth : MonoBehaviour
         {
             // Trigger game over sequence (e.g., display a message, stop the game)
             Debug.Log("Earth's health has failed!");
+            losePanel.SetActive(true);
+            Time.timeScale = 0.0f;
+
         }
     }
 
